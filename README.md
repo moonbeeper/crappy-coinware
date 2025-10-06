@@ -1,5 +1,7 @@
 # CrappyWare
 
+> The game is only intended to be played on PC only.
+
 This is my first attempt at making a game in Godot (I've never made a game before, haha). I'm not sure if will be up to
 any kind of quality standards but at least I learned a lot in the 2 days I've been working on it lol.
 
