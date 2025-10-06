@@ -1,0 +1,11 @@
+extends Control
+
+func _ready() -> void:
+	pass	
+	
+func _on_button_pressed() -> void:
+	GameManager.pick_random_game()
+	SceneManager.swap_scene("res://scenes/intermission.tscn", self)
+
+func _on_button_exit() -> void:
+	get_tree().quit()

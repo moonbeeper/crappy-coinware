@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dx74hlt28df34"]
+
+[ext_resource type="Texture2D" uid="uid://bos0lxnxs0hxe" path="res://assets/failed.png" id="1_c8ko1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faia5"]
+atlas = ExtResource("1_c8ko1")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcps5"]
+atlas = ExtResource("1_c8ko1")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj5ni"]
+atlas = ExtResource("1_c8ko1")
+region = Rect2(1024, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ltfs"]
+atlas = ExtResource("1_c8ko1")
+region = Rect2(1536, 0, 512, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faia5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcps5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj5ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ltfs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

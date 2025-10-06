@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnbv6nyrogvx1"]
+
+[ext_resource type="Shader" uid="uid://bjp5hkxkk5eaq" path="res://assets/shaders/burn.gdshader" id="1_ycbwg"]
+[ext_resource type="Texture2D" uid="uid://dlhh08evn7vv7" path="res://assets/newheart.png" id="2_krgnv"]
+[ext_resource type="Script" uid="uid://cd3xijol22ded" path="res://scenes/heart.gd" id="2_txm48"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_txm48"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8nnyc"]
+noise = SubResource("FastNoiseLite_txm48")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mtg8"]
+resource_local_to_scene = true
+shader = ExtResource("1_ycbwg")
+shader_parameter/progress = 0.0
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u10h0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oquu7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fb81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uj202"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uc88"]
+
+[node name="Heart" type="Button"]
+material = SubResource("ShaderMaterial_4mtg8")
+custom_minimum_size = Vector2(96, 96)
+pivot_offset = Vector2(48, 48)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u10h0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oquu7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0fb81")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uj202")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uc88")
+script = ExtResource("2_txm48")
+
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.16862746)
+layout_mode = 0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 104.0
+texture = ExtResource("2_krgnv")
+stretch_mode = 5
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+texture = ExtResource("2_krgnv")
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

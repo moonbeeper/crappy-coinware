@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkdshcq8idr14"]
+
+[ext_resource type="Script" uid="uid://bt22qdcwdt2jg" path="res://microgames/sort_coins/game.gd" id="1_otnth"]
+[ext_resource type="Texture2D" uid="uid://dhp6q8n7oqx8o" path="res://assets/coin_spaces.png" id="2_cj5f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj5f0"]
+atlas = ExtResource("2_cj5f0")
+region = Rect2(0, 0, 384, 324)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t14ed"]
+texture = SubResource("AtlasTexture_cj5f0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsefe"]
+size = Vector2(396, 335)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcdg4"]
+atlas = ExtResource("2_cj5f0")
+region = Rect2(384, 0, 384, 324)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hcdg4"]
+resource_local_to_scene = true
+texture = SubResource("AtlasTexture_hcdg4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o3wi"]
+
+[node name="Canvas" type="Node2D"]
+script = ExtResource("1_otnth")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -162.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="real" type="Panel" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(384, 324)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t14ed")
+
+[node name="Area2D" type="Area2D" parent="Control/VBoxContainer/HBoxContainer/real"]
+position = Vector2(0, -1)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/VBoxContainer/HBoxContainer/real/Area2D"]
+position = Vector2(193, 161.5)
+shape = SubResource("RectangleShape2D_jsefe")
+
+[node name="fake" type="Panel" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(384, 324)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hcdg4")
+
+[node name="Area2D" type="Area2D" parent="Control/VBoxContainer/HBoxContainer/fake"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/VBoxContainer/HBoxContainer/fake/Area2D"]
+position = Vector2(193, 161.5)
+shape = SubResource("RectangleShape2D_jsefe")
+debug_color = Color(0.7, 0, 0.5133335, 0.41960785)
+
+[node name="Panel" type="Panel" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+localize_numeral_system = false
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1o3wi")

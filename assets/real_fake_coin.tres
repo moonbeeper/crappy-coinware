@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b63bxwh6df8kf"]
+
+[ext_resource type="Texture2D" uid="uid://ssob814p3jbc" path="res://assets/strangecoin.png" id="1_3bcuc"]
+[ext_resource type="Texture2D" uid="uid://3onmfyhq1sth" path="res://assets/fakestrangecoin.png" id="2_b3uew"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3bcuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b3uew")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

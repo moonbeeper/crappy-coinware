@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkcrcs8x2ithb"]
+
+[ext_resource type="Script" uid="uid://bu0ryfqiq1dli" path="res://microgames/press_button/game.gd" id="1_aigj6"]
+[ext_resource type="FontFile" uid="uid://7ojg67p1k4hu" path="res://assets/DynaPuff-VariableFont_wdth,wght.ttf" id="2_w8rma"]
+
+[node name="PressButton" type="Node2D" node_paths=PackedStringArray("label", "not_label", "wrong_key", "should_not_press")]
+script = ExtResource("1_aigj6")
+label = NodePath("Control/KeyToPress")
+not_label = NodePath("Control/NO")
+wrong_key = NodePath("Control/wrong_key")
+should_not_press = NodePath("Control/why_pressed_it")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="KeyToPress" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.5
+offset_top = -39.0
+offset_right = 261.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 24
+theme_override_constants/shadow_outline_size = 34
+theme_override_fonts/font = ExtResource("2_w8rma")
+theme_override_font_sizes/font_size = 64
+text = "press ?????"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="why_pressed_it" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+offset_left = 126.0
+offset_top = 185.0
+offset_right = 1040.0
+offset_bottom = 498.0
+theme_override_fonts/font = ExtResource("2_w8rma")
+theme_override_font_sizes/font_size = 128
+text = "you pressed it
+:("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wrong_key" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+offset_left = 126.0
+offset_top = 185.0
+offset_right = 1040.0
+offset_bottom = 498.0
+theme_override_fonts/font = ExtResource("2_w8rma")
+theme_override_font_sizes/font_size = 128
+text = "wrong key
+:("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NO" type="RichTextLabel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.25
+offset_top = 200.0
+offset_right = 125.25
+offset_bottom = 278.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95652086, 0.33478904, 0.31585822, 1)
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 34
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=8.0 connected=1]DO NOT[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1

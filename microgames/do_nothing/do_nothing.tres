@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=3 format=3 uid="uid://0k4jijp6a747"]
+
+[ext_resource type="PackedScene" uid="uid://dsidgt8x3fy2w" path="res://microgames/do_nothing/do_nothing.tscn" id="1_ft4oi"]
+[ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_ypy0v"]
+
+[resource]
+script = ExtResource("2_ypy0v")
+action_prompt = "Do [color=#f3c96a]Nothing![/color]"
+scene = ExtResource("1_ft4oi")
+metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

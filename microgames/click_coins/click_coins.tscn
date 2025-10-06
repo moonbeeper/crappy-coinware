@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbgekc3q0xflp"]
+
+[ext_resource type="Script" uid="uid://btcpea0c2k3f6" path="res://microgames/click_coins/game.gd" id="1_urhej"]
+
+[node name="Canvas" type="Node2D"]
+script = ExtResource("1_urhej")
+
+[connection signal="game_ended" from="." to="." method="_on_game_ended"]

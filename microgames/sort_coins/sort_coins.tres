@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=3 format=3 uid="uid://ign0b06qr3g"]
+
+[ext_resource type="PackedScene" uid="uid://dkdshcq8idr14" path="res://microgames/sort_coins/sort_coins.tscn" id="1_j4t0m"]
+[ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_7ercg"]
+
+[resource]
+script = ExtResource("2_7ercg")
+action_prompt = "Sort the [color=#f3c96a]Coins[/color]"
+scene = ExtResource("1_j4t0m")
+time = 10.0
+metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

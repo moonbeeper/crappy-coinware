@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsidgt8x3fy2w"]
+
+[ext_resource type="Script" uid="uid://d2sdwrvymc2uo" path="res://microgames/do_nothing/game.gd" id="1_c8t5h"]
+[ext_resource type="Texture2D" uid="uid://cddy7debyjnvk" path="res://assets/hello.png" id="2_ee36w"]
+
+[node name="DoNothing" type="Node2D"]
+script = ExtResource("1_c8t5h")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.5
+offset_top = -39.0
+offset_right = 261.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 34
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/normal_font_size = 54
+bbcode_enabled = true
+text = "let's take a [rainbow]break[/rainbow]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 116.000015
+offset_right = 236.0
+offset_bottom = 239.00002
+rotation = -0.4600833
+pivot_offset = Vector2(61.5, 61.5)
+texture = ExtResource("2_ee36w")

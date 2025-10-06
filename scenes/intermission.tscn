@@ -1,0 +1,252 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvciekejqn35r"]
+
+[ext_resource type="Script" uid="uid://d38ol6g4ovsh2" path="res://scripts/intermission.gd" id="1_xx0sb"]
+[ext_resource type="Shader" uid="uid://cv8yml4id1ria" path="res://assets/shaders/checkerboard.gdshader" id="2_1v0qt"]
+[ext_resource type="PackedScene" uid="uid://cnbv6nyrogvx1" path="res://scenes/heart.tscn" id="2_cv4pq"]
+[ext_resource type="Shader" uid="uid://bjp5hkxkk5eaq" path="res://assets/shaders/burn.gdshader" id="3_1v0qt"]
+[ext_resource type="Script" uid="uid://bagbowewsahl7" path="res://scripts/draw_hearts.gd" id="3_vq6ig"]
+[ext_resource type="Texture2D" uid="uid://ptnu4fscuuos" path="res://assets/yourhearts.png" id="6_srk6g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srk6g"]
+shader = ExtResource("2_1v0qt")
+shader_parameter/square_size = 70.0
+shader_parameter/speed = 1.50000007125
+shader_parameter/color1 = Color(0.26470515, 0.21252221, 0.09161071, 1)
+shader_parameter/color2 = Color(0.047678776, 0.08549205, 0.16784516, 1)
+shader_parameter/direction = 141.72402383189
+shader_parameter/rotation = -34.9999845625
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_txm48"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8nnyc"]
+noise = SubResource("FastNoiseLite_txm48")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq6ig"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6b8fk"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2o3m"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb3pv"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b557d"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4a1f"]
+resource_local_to_scene = true
+shader = ExtResource("3_1v0qt")
+shader_parameter/progress = 0.265
+shader_parameter/noiseForce = 0.48
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_8nnyc")
+shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
+shader_parameter/borderWidth = 0.055
+shader_parameter/direction = 206.765
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_xx0sb")
+heart_scene = ExtResource("2_cv4pq")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_srk6g")
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Heart" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_vq6ig")
+layout_mode = 2
+
+[node name="Heart2" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_6b8fk")
+layout_mode = 2
+
+[node name="Heart3" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_m2o3m")
+layout_mode = 2
+
+[node name="Heart4" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_eb3pv")
+layout_mode = 2
+
+[node name="Heart5" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_b557d")
+layout_mode = 2
+
+[node name="Heart6" parent="HBoxContainer" instance=ExtResource("2_cv4pq")]
+material = SubResource("ShaderMaterial_g4a1f")
+layout_mode = 2
+
+[node name="YouLost" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -39.0
+offset_right = 324.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "You [shake rate=20.0 level=5 connected=1][color=#f3c96a]lost[/color][/shake] :("
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="SpeedUp" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -39.0
+offset_right = 324.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Speed [shake rate=20.0 level=5 connected=1][color=#f3c96a]UP!![/color][/shake]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="DrawHeartsPos" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 482.0
+offset_top = 230.0
+offset_right = 522.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+
+[node name="DestroyHeartPos" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DrawHearts" type="Control" parent="." node_paths=PackedStringArray("draw_from")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_vq6ig")
+draw_from = NodePath("../DrawHeartsPos")
+heart_scene = ExtResource("2_cv4pq")
+offset_x = 100.0
+metadata/_custom_type_script = "uid://bagbowewsahl7"
+
+[node name="ReadyText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]Press SPACE to continue[/pulse]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YourHearts" type="TextureRect" parent="."]
+modulate = Color(17.006094, 11.734437, 5.84351, 1)
+layout_mode = 0
+offset_left = 85.0
+offset_top = 103.0
+offset_right = 341.0
+offset_bottom = 359.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_srk6g")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="can_draw_hearts" from="." to="DrawHearts" method="_on_gameplay_can_draw_hearts"]

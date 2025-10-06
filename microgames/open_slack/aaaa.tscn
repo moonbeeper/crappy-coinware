@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1w5p627m2cwq"]
+
+[ext_resource type="Script" uid="uid://cwr3ubrgp0l75" path="res://microgames/open_slack/game.gd" id="1_1h8pe"]
+[ext_resource type="Texture2D" uid="uid://cot6hnj1askut" path="res://assets/daniele_19_frutigeraero.jpg" id="3_iwbv6"]
+[ext_resource type="PackedScene" uid="uid://b0vh7aie5kur4" path="res://microgames/open_slack/app.tscn" id="4_nm7u0"]
+[ext_resource type="Texture2D" uid="uid://cfgmp6sxtfoq3" path="res://assets/slack_appapp.png" id="5_ksg5c"]
+[ext_resource type="PackedScene" uid="uid://b8mhcvl0pvnbe" path="res://microgames/open_slack/coin.tscn" id="6_sfw6d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xj7br"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="PressButton" type="Node2D"]
+script = ExtResource("1_1h8pe")
+
+[node name="OpenSlack" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="OpenSlack"]
+modulate = Color(1, 1, 1, 0.6784314)
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_iwbv6")
+expand_mode = 1
+
+[node name="Application" parent="OpenSlack" instance=ExtResource("4_nm7u0")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 145.0
+offset_bottom = 170.0
+
+[node name="Screenshot" type="TextureRect" parent="OpenSlack"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 31.0
+offset_right = 1095.3386
+offset_bottom = 614.0
+texture = ExtResource("5_ksg5c")
+
+[node name="omg please showup" parent="OpenSlack" instance=ExtResource("6_sfw6d")]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 272.0
+offset_right = 843.0
+offset_bottom = 400.0
+
+[node name="my god please" type="Panel" parent="OpenSlack"]
+layout_mode = 0
+offset_left = 621.0
+offset_top = 264.0
+offset_right = 884.0
+offset_bottom = 442.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xj7br")

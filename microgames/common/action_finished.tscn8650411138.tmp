@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://co1uq8plbv02g"]
+
+[ext_resource type="Texture2D" uid="uid://b0h5wofvrkl72" path="res://assets/check.png" id="1_2k0mi"]
+[ext_resource type="SpriteFrames" uid="uid://drca6xwm0k0r0" path="res://assets/check_bad.tres" id="1_xl71d"]
+
+[sub_resource type="GDScript" id="GDScript_xl71d"]
+script/source = "extends Control
+
+@onready var container: PanelContainer = $PanelContainer
+@onready var message: AnimatedSprite2D = $PanelContainer/AnimatedSprite2D
+@onready var timer: Timer = $Timer
+
+var status: bool = false
+func _ready() -> void:
+	GameManager.game_finished.connect(_on_game_finished)
+	
+func _on_game_finished(failed: bool):
+	timer.start()
+	status = failed
+	if failed:
+		container.visible = true
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ego2c"]
+atlas = ExtResource("1_2k0mi")
+region = Rect2(0, 0, 126, 110)
+
+[node name="ActionFinished" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xl71d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ego2c")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/MarginContainer"]
+visible = false
+position = Vector2(556, 304)
+sprite_frames = ExtResource("1_xl71d")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/line_separation = -56
+theme_override_constants/shadow_outline_size = 52
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "fdf"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

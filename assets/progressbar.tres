@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cukpsfax7ni5b"]
+
+[ext_resource type="Texture2D" uid="uid://bit3eqn3ibqr0" path="res://assets/progressbar.png" id="1_sk7oi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au6tt"]
+atlas = ExtResource("1_sk7oi")
+region = Rect2(0, 192, 512, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snrx0"]
+atlas = ExtResource("1_sk7oi")
+region = Rect2(0, 128, 512, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk3m7"]
+atlas = ExtResource("1_sk7oi")
+region = Rect2(0, 64, 512, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_namd2"]
+atlas = ExtResource("1_sk7oi")
+region = Rect2(0, 0, 512, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au6tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snrx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk3m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namd2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]

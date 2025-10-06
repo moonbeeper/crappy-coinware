@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://bly2cbsf4sowg"]
+
+[ext_resource type="Script" uid="uid://ca5h3s33obng7" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Shader" uid="uid://cmped3ewxr7m6" path="res://assets/shaders/scrolling_background.gdshader" id="2_8ln24"]
+[ext_resource type="FontFile" uid="uid://7ojg67p1k4hu" path="res://assets/DynaPuff-VariableFont_wdth,wght.ttf" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://dtylidr22sic" path="res://assets/beep.png" id="3_rtw2f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oa1go"]
+shader = ExtResource("2_8ln24")
+shader_parameter/pattern_sampler = ExtResource("3_rtw2f")
+shader_parameter/Top_Color = Color(0.27058825, 0.15686275, 0.23529412, 1)
+shader_parameter/Mid_Color = Color(0.27058825, 0.15686275, 0.23529412, 1)
+shader_parameter/Bot_Color = Color(0.27058825, 0.15686275, 0.23529412, 1)
+shader_parameter/pattern_color = Color(0.9529412, 0.7882353, 0.41568628, 1)
+shader_parameter/scale = 6.0
+shader_parameter/ratio = 0.55
+
+[node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.22295302, 0.41484448, 0.57457507, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oa1go")
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -44.0
+offset_right = 90.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "get out"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_exit"]

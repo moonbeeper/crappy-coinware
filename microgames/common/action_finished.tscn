@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://co1uq8plbv02g"]
+
+[ext_resource type="Texture2D" uid="uid://b0h5wofvrkl72" path="res://assets/check.png" id="1_2k0mi"]
+[ext_resource type="Script" uid="uid://bmwsa15o4auvy" path="res://microgames/common/action_finished.gd" id="1_ego2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ego2c"]
+atlas = ExtResource("1_2k0mi")
+region = Rect2(0, 0, 126, 110)
+
+[node name="ActionFinished" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_ego2c")
+
+[node name="Sprite" type="TextureRect" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 110)
+texture = SubResource("AtlasTexture_ego2c")
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

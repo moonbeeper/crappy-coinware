@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddcawbw06cigr"]
+
+[ext_resource type="Script" uid="uid://d07joyb7ssj7w" path="res://microgames/common/action_prompt.gd" id="1_55vu8"]
+[ext_resource type="Texture2D" uid="uid://cefvcawstcyll" path="res://assets/action_text_bg.png" id="2_0q1ij"]
+
+[node name="ActionPrompt" type="Control"]
+z_index = 2
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+pivot_offset = Vector2(576, 324)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_55vu8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="Label" type="RichTextLabel" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(768, 468)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 162)
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/line_separation = -56
+theme_override_constants/shadow_outline_size = 52
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 194
+bbcode_enabled = true
+text = "Something[color=#f3c96a]something[/color]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="oldLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -39.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 39)
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 64
+text = "something something"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1393.92, 784.08)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -633.6
+offset_top = -356.4
+offset_right = 633.6
+offset_bottom = 356.4
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0q1ij")
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

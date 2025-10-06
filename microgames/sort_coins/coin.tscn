@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://drqj4farbxpo2"]
+
+[ext_resource type="Script" uid="uid://pj156bey64ts" path="res://microgames/sort_coins/coin.gd" id="1_sccej"]
+[ext_resource type="SpriteFrames" uid="uid://b63bxwh6df8kf" path="res://assets/real_fake_coin.tres" id="2_hlga3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjn2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j1om"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gw2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sefh5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvu3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sccej"]
+size = Vector2(108, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j1om"]
+radius = 67.00746
+
+[node name="Coin" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(64, 64)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjn2m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0j1om")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gw2c")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_sefh5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yvu3o")
+script = ExtResource("1_sccej")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sccej")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(64, 64)
+sleeping = true
+freeze = true
+angular_velocity = 1.3962634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_0j1om")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D/CollisionShape2D"]
+sprite_frames = ExtResource("2_hlga3")
+frame_progress = 0.51504487
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dllba77eq31jd"]
+
+[ext_resource type="Script" uid="uid://benel60bnygpp" path="res://microgames/click_coins/coin.gd" id="1_kjn2m"]
+[ext_resource type="SpriteFrames" uid="uid://b63bxwh6df8kf" path="res://assets/real_fake_coin.tres" id="1_p12yn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjn2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j1om"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gw2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sefh5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvu3o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j1om"]
+radius = 67.00746
+
+[node name="Coin" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjn2m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0j1om")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gw2c")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_sefh5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yvu3o")
+script = ExtResource("1_kjn2m")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(64, 64)
+sleeping = true
+freeze = true
+angular_velocity = 1.3962634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_0j1om")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D/CollisionShape2D"]
+sprite_frames = ExtResource("1_p12yn")
+frame_progress = 0.51504487
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

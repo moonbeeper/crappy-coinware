@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2j33ro41fv5p"]
+
+[ext_resource type="Script" uid="uid://cli7w0uhk8vfr" path="res://scripts/game_manager.gd" id="1_34tde"]
+[ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_udu3i"]
+[ext_resource type="Resource" uid="uid://bpj727wf0v366" path="res://microgames/open_slack/open_slack.tres" id="3_udu3i"]
+[ext_resource type="Resource" uid="uid://cltniyu0g7dmj" path="res://microgames/click_coins/click_coins.tres" id="4_ternb"]
+[ext_resource type="Resource" uid="uid://bj1nydurjgw2k" path="res://microgames/press_button/press_button.tres" id="5_q8mjp"]
+[ext_resource type="Resource" uid="uid://ign0b06qr3g" path="res://microgames/sort_coins/sort_coins.tres" id="6_jdad8"]
+[ext_resource type="Resource" uid="uid://dur6avgpihgmh" path="res://microgames/spam_space/spam_space.tres" id="7_jdad8"]
+[ext_resource type="Resource" uid="uid://0k4jijp6a747" path="res://microgames/do_nothing/do_nothing.tres" id="8_k4jhu"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_34tde")
+game_pool = Array[ExtResource("2_udu3i")]([ExtResource("3_udu3i"), ExtResource("4_ternb"), ExtResource("5_q8mjp"), ExtResource("6_jdad8"), ExtResource("7_jdad8"), ExtResource("8_k4jhu")])
