@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2j33ro41fv5p"]
+[gd_scene load_steps=13 format=3 uid="uid://b2j33ro41fv5p"]
 
 [ext_resource type="Script" uid="uid://cli7w0uhk8vfr" path="res://scripts/game_manager.gd" id="1_34tde"]
 [ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_udu3i"]
@@ -8,7 +8,13 @@
 [ext_resource type="Resource" uid="uid://ign0b06qr3g" path="res://microgames/sort_coins/sort_coins.tres" id="6_jdad8"]
 [ext_resource type="Resource" uid="uid://dur6avgpihgmh" path="res://microgames/spam_space/spam_space.tres" id="7_jdad8"]
 [ext_resource type="Resource" uid="uid://0k4jijp6a747" path="res://microgames/do_nothing/do_nothing.tres" id="8_k4jhu"]
+[ext_resource type="Script" uid="uid://bpnidneuwiacd" path="res://scripts/res_gamepack.gd" id="9_ivdh1"]
+[ext_resource type="Resource" uid="uid://c7gwmeqtvhly" path="res://microgames/gamepacks/default.tres" id="10_xpf01"]
+[ext_resource type="Resource" uid="uid://bntquwr4krdhf" path="res://microgames/gamepacks/coins.tres" id="11_038pf"]
+[ext_resource type="Resource" uid="uid://1nabw6n4k6pb" path="res://microgames/gamepacks/magic.tres" id="12_eatvy"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_34tde")
 game_pool = Array[ExtResource("2_udu3i")]([ExtResource("3_udu3i"), ExtResource("4_ternb"), ExtResource("5_q8mjp"), ExtResource("6_jdad8"), ExtResource("7_jdad8"), ExtResource("8_k4jhu")])
+game_packs = Array[ExtResource("9_ivdh1")]([ExtResource("10_xpf01"), ExtResource("11_038pf"), ExtResource("12_eatvy")])
+metadata/_custom_type_script = "uid://cli7w0uhk8vfr"

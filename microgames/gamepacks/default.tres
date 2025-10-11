@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GamePackResource" load_steps=3 format=3 uid="uid://c7gwmeqtvhly"]
+
+[ext_resource type="Texture2D" uid="uid://cyeol0udpoy56" path="res://assets/default_gamepak.png" id="1_fu8ne"]
+[ext_resource type="Script" uid="uid://bpnidneuwiacd" path="res://scripts/res_gamepack.gd" id="2_0gsrw"]
+
+[resource]
+script = ExtResource("2_0gsrw")
+display_name = "Default GamePack"
+icon = ExtResource("1_fu8ne")
+metadata/_custom_type_script = "uid://bpnidneuwiacd"

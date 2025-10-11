@@ -1,0 +1,282 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkenlv6wmtwwr"]
+
+[ext_resource type="Shader" uid="uid://cv8yml4id1ria" path="res://assets/shaders/checkerboard.gdshader" id="1_qbc7d"]
+[ext_resource type="Script" uid="uid://chmyabeqeplbb" path="res://scripts/pack_selector.gd" id="1_xu5yh"]
+[ext_resource type="Shader" uid="uid://djhe4aipvpx01" path="res://assets/shaders/distorsion.gdshader" id="2_xu5yh"]
+[ext_resource type="Texture2D" uid="uid://ioxkj0rtybe" path="res://assets/loading.png" id="4_u33fx"]
+[ext_resource type="PackedScene" uid="uid://boyuykiegxq6s" path="res://nodes/gamepack_ranking.tscn" id="5_4japl"]
+[ext_resource type="Texture2D" uid="uid://bsxkc04f2gddv" path="res://assets/rect.png" id="5_r1n7n"]
+[ext_resource type="Texture2D" uid="uid://d0pvle6afcch0" path="res://assets/uhdarkeningthing.png" id="5_u33fx"]
+[ext_resource type="Texture2D" uid="uid://cwr786q02fvav" path="res://assets/key_CTRL.png" id="7_r1n7n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqolg"]
+shader = ExtResource("1_qbc7d")
+shader_parameter/square_size = 70.0
+shader_parameter/speed = 0.2000000095
+shader_parameter/color1 = Color(0.66, 0.38280004, 0.57222, 1)
+shader_parameter/color2 = Color(0.81, 0.619515, 0.13770002, 1)
+shader_parameter/direction = 141.72402383189
+shader_parameter/rotation = -34.9999845625
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u33fx"]
+shader = ExtResource("2_xu5yh")
+shader_parameter/time_scale = 1.0
+shader_parameter/frequency = 5.0
+shader_parameter/amplitude = 0.025
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fxnj1"]
+
+[node name="PackSelector" type="Control" node_paths=PackedStringArray("game_pack_container", "too_many_packs_thing", "loading_containers", "loading_icons", "right_side", "rankings_container", "play_button", "info_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xu5yh")
+game_pack_container = NodePath("HBoxContainer/Left/ScrollContainer/GridContainer")
+too_many_packs_thing = NodePath("TooManyGamePacks")
+loading_containers = [NodePath("HBoxContainer/Right/CenterContainer"), NodePath("HBoxContainer/Left/CenterContainer")]
+loading_icons = [NodePath("HBoxContainer/Left/CenterContainer/Control/Loading"), NodePath("HBoxContainer/Right/CenterContainer/Control/Loading")]
+right_side = NodePath("HBoxContainer/Right")
+rankings_container = NodePath("HBoxContainer/Right/VBoxContainer/ScrollContainer/VBoxContainer")
+play_button = NodePath("HBoxContainer/Right/VBoxContainer/VBoxContainer2/PlayButton")
+info_text = NodePath("Info")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="black" type="ColorRect" parent="Background"]
+modulate = Color(0, 0, 0, 0.49803922)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="Background"]
+z_index = -2
+material = SubResource("ShaderMaterial_dqolg")
+custom_minimum_size = Vector2(1202, 698)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Distortion" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_u33fx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Background"]
+copy_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="MarginContainer" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(550, 500)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Left"]
+clip_contents = false
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Left/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Left/CenterContainer"]
+layout_mode = 2
+
+[node name="Loading" type="TextureRect" parent="HBoxContainer/Left/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("4_u33fx")
+
+[node name="Right" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Right/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Rankings"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Right/VBoxContainer"]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GamePackRanking" parent="HBoxContainer/Right/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_4japl")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 2
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/Right/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fxnj1")
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Right/VBoxContainer/VBoxContainer2/PlayButton"]
+modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_r1n7n")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Right/VBoxContainer/VBoxContainer2/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Play![/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Right/CenterContainer"]
+layout_mode = 2
+
+[node name="Loading" type="TextureRect" parent="HBoxContainer/Right/CenterContainer/Control"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("4_u33fx")
+
+[node name="TooManyGamePacks" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 575.0
+offset_right = 609.0
+offset_bottom = 607.0
+texture = ExtResource("5_u33fx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 592.0
+offset_bottom = 648.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("7_r1n7n")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Choose your game packs"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Info" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -40.0
+offset_right = 11.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "Choose the [b]GamePack(s) [/b]you want to play! Hover over them for [fade]more info.[/fade]"
+fit_content = true
+
+[connection signal="pressed" from="HBoxContainer/Right/VBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]

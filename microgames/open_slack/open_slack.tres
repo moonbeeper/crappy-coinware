@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MicrogameResource" load_steps=3 format=3 uid="uid://bpj727wf0v366"]
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=4 format=3 uid="uid://bpj727wf0v366"]
 
-[ext_resource type="PackedScene" uid="uid://c1w5p627m2cwq" path="res://microgames/open_slack/aaaa.tscn" id="1_cg2lh"]
+[ext_resource type="PackedScene" uid="uid://bnrblockoypeq" path="res://microgames/open_slack/open_slack.tscn" id="1_cg2lh"]
+[ext_resource type="Resource" uid="uid://bntquwr4krdhf" path="res://microgames/gamepacks/coins.tres" id="1_idnln"]
 [ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_wki2c"]
 
 [resource]
@@ -8,4 +9,5 @@ script = ExtResource("2_wki2c")
 action_prompt = "Open [color=#f3c96a]Slack![/color]"
 scene = ExtResource("1_cg2lh")
 time = 60.0
+game_pack = ExtResource("1_idnln")
 metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

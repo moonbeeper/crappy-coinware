@@ -21,7 +21,7 @@ config/icon="uid://ssob814p3jbc"
 
 [autoload]
 
-GameManager="*res://scenes/game_manager.tscn"
+GameManager="*res://nodes/game_manager.tscn"
 SceneManager="*res://scripts/scene_manager.gd"
 NotificationManager="*res://scripts/notification_manager.gd"
 
@@ -63,3 +63,4 @@ spam_space={
 
 textures/canvas_textures/default_texture_filter=0
 anti_aliasing/quality/msaa_2d=1
+2d/snap/snap_2d_transforms_to_pixel=true

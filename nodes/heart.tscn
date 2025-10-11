@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bjp5hkxkk5eaq" path="res://assets/shaders/burn.gdshader" id="1_ycbwg"]
 [ext_resource type="Texture2D" uid="uid://dlhh08evn7vv7" path="res://assets/newheart.png" id="2_krgnv"]
-[ext_resource type="Script" uid="uid://cd3xijol22ded" path="res://scenes/heart.gd" id="2_txm48"]
+[ext_resource type="Script" uid="uid://cd3xijol22ded" path="res://scripts/Nheart.gd" id="2_txm48"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_txm48"]
 

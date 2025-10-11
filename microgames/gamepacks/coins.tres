@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GamePackResource" load_steps=3 format=3 uid="uid://bntquwr4krdhf"]
+
+[ext_resource type="Texture2D" uid="uid://cp711oaq5724" path="res://assets/coin_gamepak.png" id="1_xv83u"]
+[ext_resource type="Script" uid="uid://bpnidneuwiacd" path="res://scripts/res_gamepack.gd" id="2_vp2nm"]
+
+[resource]
+script = ExtResource("2_vp2nm")
+display_name = "Microgames about Coins!"
+icon = ExtResource("1_xv83u")
+pack_id = 1
+metadata/_custom_type_script = "uid://bpnidneuwiacd"

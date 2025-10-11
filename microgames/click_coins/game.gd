@@ -34,3 +34,9 @@ func _on_pressed(node: Node) -> void:
 	print("clicked, %s / %s" % [coin_amount,initial_coin_amount])
 	coin_amount -= 1
 	instantiated_coins.erase(node)
+
+func _on_game_ended():
+	finished = true
+	for coin in instantiated_coins:
+		if coin:
+			coin.explode()

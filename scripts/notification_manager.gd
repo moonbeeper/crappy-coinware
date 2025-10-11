@@ -1,6 +1,6 @@
 extends Control
 
-var notification_scene = preload("res://scenes/notification.tscn")
+var notification_scene = preload("res://nodes/notification.tscn")
 
 func show_notification(bbcode: String) -> void:
 	var instance = notification_scene.instantiate() as NotificationBasic

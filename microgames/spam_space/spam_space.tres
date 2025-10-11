@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="MicrogameResource" load_steps=3 format=3 uid="uid://dur6avgpihgmh"]
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=4 format=3 uid="uid://dur6avgpihgmh"]
 
+[ext_resource type="Resource" uid="uid://bntquwr4krdhf" path="res://microgames/gamepacks/coins.tres" id="1_17x8x"]
 [ext_resource type="PackedScene" uid="uid://cpwkqcrfybjbg" path="res://microgames/spam_space/spam_space.tscn" id="1_q8gbj"]
 [ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="2_0p0fl"]
 
@@ -8,4 +9,5 @@ script = ExtResource("2_0p0fl")
 action_prompt = "Smash [color=#f3c96a]Space![/color]"
 scene = ExtResource("1_q8gbj")
 time = 8.0
+game_pack = ExtResource("1_17x8x")
 metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

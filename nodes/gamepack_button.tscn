@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3tg62g5eodav"]
+
+[ext_resource type="Script" uid="uid://shrepe2acoa1" path="res://scripts/gamepack_button.gd" id="1_cuvah"]
+[ext_resource type="Texture2D" uid="uid://djqpyfoigtggr" path="res://icon.svg" id="1_j0oxl"]
+[ext_resource type="Shader" uid="uid://dc8gw1xhp7d2y" path="res://assets/outline_selection.gdshader" id="1_ohv1k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cuvah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ohv1k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ha6y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74uvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32nn2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohv1k"]
+resource_local_to_scene = true
+shader = ExtResource("1_ohv1k")
+shader_parameter/out_of_bounds = true
+shader_parameter/stop = true
+shader_parameter/outline_thickness = 3.0
+shader_parameter/outline_color = Color(0.9529412, 0.7882353, 0.41568628, 1)
+shader_parameter/sweep_speed = 1.0
+shader_parameter/sweep_width = 0.1
+shader_parameter/sweep_intensity = 1.0
+
+[node name="GamePackSelector" type="Button" node_paths=PackedStringArray("pack_icon", "pack_icon_shadow")]
+custom_minimum_size = Vector2(148, 148)
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(74, 74)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cuvah")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ohv1k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8ha6y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_74uvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_32nn2")
+script = ExtResource("1_cuvah")
+pack_icon = NodePath("CenterContainer/Icon")
+pack_icon_shadow = NodePath("Shadow/Icon")
+metadata/_custom_type_script = "uid://shrepe2acoa1"
+
+[node name="Shadow" type="MarginContainer" parent="."]
+modulate = Color(0.039215688, 0.039215688, 0.039215688, 0.47843137)
+custom_minimum_size = Vector2(148, 148)
+layout_mode = 0
+offset_top = 5.0
+offset_right = 148.0
+offset_bottom = 153.0
+
+[node name="Icon" type="TextureRect" parent="Shadow"]
+layout_mode = 2
+texture = ExtResource("1_j0oxl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CenterContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(148, 148)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Icon" type="TextureRect" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_ohv1k")
+layout_mode = 2
+texture = ExtResource("1_j0oxl")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

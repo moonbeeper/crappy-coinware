@@ -1,20 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvciekejqn35r"]
+[gd_scene load_steps=18 format=3 uid="uid://bvciekejqn35r"]
 
 [ext_resource type="Script" uid="uid://d38ol6g4ovsh2" path="res://scripts/intermission.gd" id="1_xx0sb"]
 [ext_resource type="Shader" uid="uid://cv8yml4id1ria" path="res://assets/shaders/checkerboard.gdshader" id="2_1v0qt"]
-[ext_resource type="PackedScene" uid="uid://cnbv6nyrogvx1" path="res://scenes/heart.tscn" id="2_cv4pq"]
+[ext_resource type="PackedScene" uid="uid://cnbv6nyrogvx1" path="res://nodes/heart.tscn" id="2_cv4pq"]
 [ext_resource type="Shader" uid="uid://bjp5hkxkk5eaq" path="res://assets/shaders/burn.gdshader" id="3_1v0qt"]
 [ext_resource type="Script" uid="uid://bagbowewsahl7" path="res://scripts/draw_hearts.gd" id="3_vq6ig"]
+[ext_resource type="Shader" uid="uid://djhe4aipvpx01" path="res://assets/shaders/distorsion.gdshader" id="4_6b8fk"]
 [ext_resource type="Texture2D" uid="uid://ptnu4fscuuos" path="res://assets/yourhearts.png" id="6_srk6g"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_srk6g"]
-shader = ExtResource("2_1v0qt")
-shader_parameter/square_size = 70.0
-shader_parameter/speed = 1.50000007125
-shader_parameter/color1 = Color(0.26470515, 0.21252221, 0.09161071, 1)
-shader_parameter/color2 = Color(0.047678776, 0.08549205, 0.16784516, 1)
-shader_parameter/direction = 141.72402383189
-shader_parameter/rotation = -34.9999845625
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_txm48"]
 
@@ -81,6 +73,21 @@ shader_parameter/burnColor = Color(0.9188538, 0.36831486, 0.3036546, 1)
 shader_parameter/borderWidth = 0.055
 shader_parameter/direction = 206.765
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srk6g"]
+shader = ExtResource("2_1v0qt")
+shader_parameter/square_size = 70.0
+shader_parameter/speed = 1.50000007125
+shader_parameter/color1 = Color(0.26470515, 0.21252221, 0.09161071, 1)
+shader_parameter/color2 = Color(0.047678776, 0.08549205, 0.16784516, 1)
+shader_parameter/direction = 141.72402383189
+shader_parameter/rotation = -34.9999845625
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xl457"]
+shader = ExtResource("4_6b8fk")
+shader_parameter/time_scale = 1.0
+shader_parameter/frequency = 5.0
+shader_parameter/amplitude = 0.025
+
 [node name="Gameplay" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -91,16 +98,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_xx0sb")
 heart_scene = ExtResource("2_cv4pq")
-
-[node name="TextureRect" type="ColorRect" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_srk6g")
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -248,5 +245,37 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_srk6g")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Background" type="ColorRect" parent="Background"]
+z_index = -2
+material = SubResource("ShaderMaterial_srk6g")
+custom_minimum_size = Vector2(1202, 698)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Distortion" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_xl457")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Background"]
+copy_mode = 2
 
 [connection signal="can_draw_hearts" from="." to="DrawHearts" method="_on_gameplay_can_draw_hearts"]
