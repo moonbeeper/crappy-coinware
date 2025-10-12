@@ -12,6 +12,7 @@ var progress: float = 0.0
 var stop: bool = false
 var arrow_original_y: float = 0.0
 var arrow_delta: float = 0.0
+
 # ah, so simple
 func _ready() -> void:
 	_setup()
@@ -21,6 +22,7 @@ func _ready() -> void:
 		press_fill_rate *= Engine.time_scale
 	
 func _process(delta: float) -> void:
+	if !game_started: return
 	arrow_delta += delta
 	arrow.position.y = arrow_original_y + sin(arrow_delta * time_multiplier) * anim_offset_y * 50
 	if stop:
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 		return
 	
 func _input(event) -> void:
+	if !game_started: return
 	if event.is_action_pressed("spam_space"):
 		print("pressed action to make progress go up")
 		progress += press_fill_rate

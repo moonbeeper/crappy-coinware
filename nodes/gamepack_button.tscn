@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://shrepe2acoa1" path="res://scripts/gamepack_button.gd" id="1_cuvah"]
 [ext_resource type="Texture2D" uid="uid://djqpyfoigtggr" path="res://icon.svg" id="1_j0oxl"]
-[ext_resource type="Shader" uid="uid://dc8gw1xhp7d2y" path="res://assets/outline_selection.gdshader" id="1_ohv1k"]
+[ext_resource type="Shader" uid="uid://dc8gw1xhp7d2y" path="res://assets/shaders/outline_selection.gdshader" id="1_ohv1k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cuvah"]
 

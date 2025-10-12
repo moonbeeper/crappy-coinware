@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkenlv6wmtwwr"]
+[gd_scene load_steps=11 format=3 uid="uid://dkenlv6wmtwwr"]
 
 [ext_resource type="Shader" uid="uid://cv8yml4id1ria" path="res://assets/shaders/checkerboard.gdshader" id="1_qbc7d"]
 [ext_resource type="Script" uid="uid://chmyabeqeplbb" path="res://scripts/pack_selector.gd" id="1_xu5yh"]
 [ext_resource type="Shader" uid="uid://djhe4aipvpx01" path="res://assets/shaders/distorsion.gdshader" id="2_xu5yh"]
 [ext_resource type="Texture2D" uid="uid://ioxkj0rtybe" path="res://assets/loading.png" id="4_u33fx"]
-[ext_resource type="PackedScene" uid="uid://boyuykiegxq6s" path="res://nodes/gamepack_ranking.tscn" id="5_4japl"]
 [ext_resource type="Texture2D" uid="uid://bsxkc04f2gddv" path="res://assets/rect.png" id="5_r1n7n"]
 [ext_resource type="Texture2D" uid="uid://d0pvle6afcch0" path="res://assets/uhdarkeningthing.png" id="5_u33fx"]
 [ext_resource type="Texture2D" uid="uid://cwr786q02fvav" path="res://assets/key_CTRL.png" id="7_r1n7n"]
@@ -162,9 +161,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="GamePackRanking" parent="HBoxContainer/Right/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_4japl")]
-layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
 layout_mode = 2

@@ -19,6 +19,8 @@ You can also get lives! You start with 3 lives and have a max of 6.
 - press a button on your keyboard
 - sort coins into fake and real (hard)
 - spam your spacebar
+- burn bob
+- draw magic circles
 
 ## how to run
 

@@ -15,6 +15,9 @@ enum TransitionType {SLIDE, FADE}
 @export var max_hearts: int = 6
 @export var game_pool: Array[MicrogameResource] = []
 @export var game_packs: Array[GamePackResource] = []
+@export var base_points: int = 100
+@export var round_point_multiplier: float = 0.1
+
 var current_game: MicrogameResource
 var game_won: bool = true
 
@@ -26,6 +29,8 @@ var is_speed_up: bool = false
 var cached_gamepack_meta: Dictionary[GamePackResource, int] = {}
 var save_data: SaveData = null
 var current_game_pool: Array[MicrogameResource] = []
+var current_game_pack_ids: Array[int]
+var current_score: int = 0
 
 func _ready() -> void:
 	game_finished.connect(_on_game_finished)
@@ -33,18 +38,26 @@ func _ready() -> void:
 	current_hearts = max_hearts / 2
 	save_data = SaveData.load_me()
 
-func _on_game_finished(has_won: bool):
+func _on_game_finished(has_won: bool) -> void:
 	game_won = has_won
 	if !game_won:
 		win_chain = 0
 		has_lost_heart = true
-		current_hearts -= 1
+		current_hearts -= 1 
 		print("game failed, lost a heart. the player now has %s" % current_hearts)
+		if current_hearts == 0: 
+			print("player died, saving scores")
+			if !current_game_pack_ids.is_empty():
+				save_data.add_score(current_game_pack_ids, current_score, win_chain)
+				print("game saved")
+			else:
+				push_error("somehow the player doesn't have lives and finished a game... couldn't save the game")
 	else:
+		current_score += calculate_score()
 		win_chain_add()
-	game_round += 1
-	speeeeeeed()
-	pick_random_game()
+		game_round += 1
+		speeeeeeed()
+		pick_random_game()
 
 func get_random_game() -> MicrogameResource:
 	if current_game_pool.is_empty():
@@ -73,7 +86,7 @@ func get_game_packs() -> Dictionary[GamePackResource, int]:
 	cached_gamepack_meta = pack_counts
 	return cached_gamepack_meta
 
-func create_game_pool(pack_ids: Array[int]):
+func create_game_pool(pack_ids: Array[int]) -> void:
 	print("creating new game pool for pack id(s): %s" % pack_ids)
 	if pack_ids.is_empty():
 		push_error("cannot create a game pool without any pack id(s)")
@@ -99,7 +112,7 @@ func get_next_scene() -> String:
 
 		return current_game.scene.resource_path
 
-func _on_intermission_finished():
+func _on_intermission_finished() -> void:
 	game_won = true
 	has_lost_heart = false
 	is_speed_up = false
@@ -116,7 +129,7 @@ func reset() -> void:
 	Engine.time_scale = 1.0
 	current_game_pool.clear()
 
-func win_chain_add():
+func win_chain_add() -> void:
 	win_chain += 1
 	if win_chain % 3 == 0:
 		NotificationManager.show_notification("[wave amp=50.0 freq=5.0 connected=1]You Are On [color=#f3c96a]Fire![/color] %s Wins In a Row![/wave]" % win_chain)
@@ -126,10 +139,21 @@ func win_chain_add():
 	elif win_chain % 12 == 9: 
 		NotificationManager.show_notification("[wave amp=50.0 freq=5.0 connected=1]3 More To Get a [color=#f3c96a]Heart![/color][/wave]")
 
-func speeeeeeed():
+func speeeeeeed() -> void:
 	if game_round % 4 == 0:
 		print("making faster the engine timescale by 0.2")
 		Engine.time_scale += .2
 		print("the current engine timescale is %s" % Engine.time_scale)
 		is_speed_up = true
-		
+
+func calculate_score() -> int:
+	var round_multiplier = 1.0 + (game_round * 0.1)
+	var combo_bonus = 0
+	
+	if win_chain >= 3:
+		combo_bonus = win_chain * 50
+	var heart_bonus = current_hearts * 25
+	var total_points = int((base_points * round_multiplier * Engine.time_scale) + combo_bonus + heart_bonus)
+	print("the current score is %s" % total_points)
+	
+	return total_points

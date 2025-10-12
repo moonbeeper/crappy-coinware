@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c87242fjctjq2"]
+
+[sub_resource type="Curve" id="Curve_1uf0f"]
+_data = [Vector2(0, 0.6741574), 0.0, 1.4, 0, 0, Vector2(0.14832538, 0.8764045), 0.0, 0.0, 0, 0, Vector2(0.6076555, 0.7865169), 0.0, 0.0, 0, 0, Vector2(0.84689, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.3820225), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Line2D" type="Line2D"]
+width = 20.0
+width_curve = SubResource("Curve_1uf0f")
+default_color = Color(0.9529412, 0.7882353, 0.41568628, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

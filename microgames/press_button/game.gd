@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	label_set = true
 
 func _input(event) -> void:
-	if stop_responding or not game_started:
+	if stop_responding or !game_started:
 		return
 	if event.is_action_pressed("press_button_action"):
 		stop_responding = true

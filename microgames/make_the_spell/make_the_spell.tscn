@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwemvwq7bmox3"]
+
+[ext_resource type="Script" uid="uid://cut1uo0dqpc0" path="res://microgames/make_the_spell/game.gd" id="1_q71k4"]
+[ext_resource type="SpriteFrames" uid="uid://cqxy6i4uoo2na" path="res://assets/magic_symboles.tres" id="2_okrlp"]
+[ext_resource type="Script" uid="uid://ciyno8vkt6hew" path="res://microgames/make_the_spell/follow_the_line.gd" id="2_q71k4"]
+[ext_resource type="PackedScene" uid="uid://c87242fjctjq2" path="res://microgames/make_the_spell/line_2d.tscn" id="4_n0fu0"]
+
+[sub_resource type="Curve2D" id="Curve2D_n0fu0"]
+_data = {
+"points": PackedVector2Array(0.7710864, -5.91031, -0.7710864, 5.91031, 464, 463.32214, -36.241062, -4.7282476, 36.241062, 4.7282476, 580, 406.0908, 0, 0, 0, 0, 684, 459.2342, -15.036184, 25.611341, 15.036184, -25.611341, 669, 351.9254, -16.192814, 21.671135, 16.192814, -21.671135, 763, 277.32025, 14.650641, 16.548866, -14.650641, -16.548866, 644, 246.6606, 33.54226, -7.4863925, -33.54226, 7.4863925, 577, 149.5717, 0, 0, 0, 0, 525, 265.0564, 15.807271, -22.853197, -15.807271, 22.853197, 390, 263.01242, -10.79521, -37.03794, 10.79521, 37.03794, 486, 361.12332, 0, 0, 0, 0, 465, 462.30017)
+}
+point_count = 11
+
+[node name="PressButton" type="Node2D" node_paths=PackedStringArray("follow_line", "path2ds", "sprite")]
+script = ExtResource("1_q71k4")
+follow_line = NodePath("FollowTheLine")
+path2ds = [NodePath("square"), NodePath("flower"), NodePath("straf")]
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(580, 324)
+sprite_frames = ExtResource("2_okrlp")
+frame = 1
+
+[node name="FollowTheLine" type="Node2D" parent="." node_paths=PackedStringArray("target_path")]
+script = ExtResource("2_q71k4")
+target_path = NodePath("../square")
+margin_of_error = 80.0
+player_line = ExtResource("4_n0fu0")
+metadata/_custom_type_script = "uid://ciyno8vkt6hew"
+
+[node name="square" type="Path2D" parent="."]
+visible = false
+position = Vector2(0, 2.6463776)
+scale = Vector2(1, 0.97848475)
+curve = SubResource("Curve2D_n0fu0")
+metadata/_edit_lock_ = true
+
+[node name="flower" type="Path2D" parent="."]
+visible = false
+position = Vector2(5, 2.0000002)
+scale = Vector2(1, 0.97848475)
+curve = SubResource("Curve2D_n0fu0")
+
+[node name="straf" type="Path2D" parent="."]
+visible = false
+position = Vector2(0, 2.6463776)
+scale = Vector2(1, 0.97848475)
+curve = SubResource("Curve2D_n0fu0")
+
+[connection signal="finished_drawing" from="FollowTheLine" to="." method="_on_follow_the_line_finished_drawing"]

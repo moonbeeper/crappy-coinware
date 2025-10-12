@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=4 format=3 uid="uid://cumm4xdlh8h4o"]
+
+[ext_resource type="Resource" uid="uid://1nabw6n4k6pb" path="res://microgames/gamepacks/magic.tres" id="1_jy055"]
+[ext_resource type="PackedScene" uid="uid://cr4oduvbx3tkq" path="res://microgames/burn_bob/burn_bob.tscn" id="2_ncjwo"]
+[ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://scripts/res_microgame.gd" id="3_a182o"]
+
+[resource]
+script = ExtResource("3_a182o")
+action_prompt = "Click [color=#f3c96a]Bob![/color]"
+scene = ExtResource("2_ncjwo")
+time = 7.0
+game_pack = ExtResource("1_jy055")
+metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

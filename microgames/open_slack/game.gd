@@ -15,6 +15,8 @@ func _ready() -> void:
 
 
 func _on_application_open_app() -> void:
+	if !game_started: return
+
 	print("opening slack screenshot")
 	if already_pressed:
 		print("already opened before, ignoring")

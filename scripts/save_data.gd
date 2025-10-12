@@ -6,10 +6,12 @@ var max_highscores_per_packs: int = 10
 
 func save() -> void:
 	print("saving game")
-	ResourceSaver.save(self, "user://save_data.res")
+	var error = ResourceSaver.save(self, "user://save_data.tres")
+	if error:
+		print("something went wrong while saving: %s" % error)
 	
 static func load_me() -> SaveData:
-	if !ResourceLoader.exists("user://save_data.res"):
+	if !ResourceLoader.exists("user://save_data.tres"):
 		push_warning("there wasn't already a save data file, loading a fresh one")
 		return SaveData.new()
 	else:

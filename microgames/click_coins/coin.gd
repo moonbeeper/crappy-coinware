@@ -9,6 +9,7 @@ enum CoinType { REAL, FAKE }
 signal am_pressed(Node)
 
 var already_pressed = false
+var already_exploded: bool = false
 
 func _ready() -> void:
 	if coin_type == CoinType.FAKE:
@@ -19,6 +20,20 @@ func _on_pressed() -> void:
 		return
 	
 	already_pressed = true
+	rigid.freeze = false
+	rigid.apply_impulse(Vector2(100, -500))
+		
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color(1,1,1,0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	am_pressed.emit(self)
+	queue_free()
+
+func explode():
+	if already_exploded:
+		return
+	
+	already_exploded = true
 	rigid.freeze = false
 	rigid.apply_impulse(Vector2(100, -500))
 		

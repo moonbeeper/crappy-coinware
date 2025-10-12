@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://cr4oduvbx3tkq"]
+
+[ext_resource type="SpriteFrames" uid="uid://bjilrvtxf1dwy" path="res://assets/sadbob.tres" id="1_mwp08"]
+[ext_resource type="Script" uid="uid://dthlkr2i30sbg" path="res://microgames/burn_bob/game.gd" id="1_nixcu"]
+[ext_resource type="Shader" uid="uid://bjp5hkxkk5eaq" path="res://assets/shaders/burn.gdshader" id="2_ad3w0"]
+[ext_resource type="Script" uid="uid://cvfy5cs60jc7e" path="res://microgames/burn_bob/cursor.gd" id="4_0wvwq"]
+[ext_resource type="Texture2D" uid="uid://x6wos1n1k578" path="res://assets/magic_wand.png" id="4_a3s11"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a3s11"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ya4d"]
+noise = SubResource("FastNoiseLite_a3s11")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hsyh6"]
+resource_local_to_scene = true
+shader = ExtResource("2_ad3w0")
+shader_parameter/progress = -4.395
+shader_parameter/noiseForce = 4.265
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_1ya4d")
+shader_parameter/burnColor = Color(1, 0.19966345, 0.19966345, 0.8)
+shader_parameter/borderWidth = 0.08
+shader_parameter/direction = 171.43
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ya4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsyh6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cak6s"]
+
+[node name="PressButton" type="Node2D" node_paths=PackedStringArray("bob_container", "bob")]
+script = ExtResource("1_nixcu")
+bob_container = NodePath("Node2D")
+bob = NodePath("Node2D/AnimatedSprite2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 33.0
+offset_bottom = 33.0
+mouse_filter = 2
+texture = ExtResource("4_a3s11")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("4_0wvwq")
+
+[node name="Node2D" type="Button" parent="."]
+material = SubResource("ShaderMaterial_hsyh6")
+offset_left = 305.0
+offset_top = 43.0
+offset_right = 787.0
+offset_bottom = 541.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1ya4d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hsyh6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cak6s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+use_parent_material = true
+position = Vector2(244, 275)
+sprite_frames = ExtResource("1_mwp08")
+
+[connection signal="pressed" from="Node2D" to="." method="_on_node_2d_pressed"]

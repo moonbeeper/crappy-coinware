@@ -25,7 +25,7 @@ expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0u3b"]
-bg_color = Color(0.50980395, 0.41960785, 0.21176471, 1)
+bg_color = Color(0.9529412, 0.7882353, 0.41568628, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8

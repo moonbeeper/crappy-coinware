@@ -29,7 +29,7 @@ func _ready() -> void:
 	is_ready = true
 
 func _process(_delta: float) -> void:
-	if finished || !is_ready:
+	if finished || !is_ready || !game_started:
 		return
 
 	var coins_in_real = real_coin_zone.get_overlapping_areas()

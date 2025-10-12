@@ -24,13 +24,14 @@ func _ready() -> void:
 		
 	is_ready = true
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !coin_amount == 0 || finished || !is_ready:
 		return
 	finished = true
 	has_won(true)
 	
 func _on_pressed(node: Node) -> void:
+	if !game_started: return
 	print("clicked, %s / %s" % [coin_amount,initial_coin_amount])
 	coin_amount -= 1
 	instantiated_coins.erase(node)
