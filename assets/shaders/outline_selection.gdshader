@@ -7,6 +7,7 @@ uniform vec4 outline_color: source_color = vec4(1.0);
 uniform float sweep_speed = 1.0;
 uniform float sweep_width = 0.1;
 uniform float sweep_intensity: hint_range(0.7, 2.0) = 1.0;
+uniform bool outline_ignore_modulate = false;
 
 bool is_inside_usquare(vec2 x) {
 	return x == clamp(x, vec2(0.0), vec2(1.0));
@@ -28,9 +29,9 @@ void vertex() {
 }
 
 void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
 	if (outline_thickness > 0.0 && outline_color.a > 0.0) {
 		vec2 uv = UV;
-		vec4 texture_color = texture(TEXTURE, UV);
 
 		if (out_of_bounds) {
 			vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(outline_thickness * 2.0));
@@ -88,12 +89,20 @@ void fragment() {
 		}
 
 		vec4 outline = vec4(final_outline_rgb, alpha * outline_color.a);
-		COLOR = blend(outline, texture_color) * modulate_color;
+		
+		vec4 base = blend(outline, texture_color);
+		if (outline_ignore_modulate) {
+			vec4 final = blend(vec4(0.0), texture_color) * modulate_color;
+			COLOR = blend(outline, final);
+		} else {
+			COLOR = base * modulate_color;
+		};
 	} else {
 		COLOR = texture(TEXTURE, UV);
 	}
 
 	if (stop) {
-		COLOR = texture(TEXTURE, UV);
+		vec4 final = blend(vec4(0.0), texture_color) * modulate_color;
+		COLOR = final;
 	}
 }

@@ -12,17 +12,19 @@ signal game_intermission_finished
 
 enum TransitionType {SLIDE, FADE}
 
-@export var max_hearts: int = 6
+#@export var max_hearts: int = 6
 @export var game_pool: Array[MicrogameResource] = []
 @export var game_packs: Array[GamePackResource] = []
+@export var game_modifiers: Array[GameModifierResource] = []
 @export var base_points: int = 100
 @export var round_point_multiplier: float = 0.1
-@export var increase_speed_every: int = 5
+#@export var increase_speed_every: int = 5
 
 var game_cycler: GameCycler = null
+var game_modifier_cycler: ModifierCycler = null
 
 var game_won: bool = true
-var current_hearts: int = 0
+var current_hearts: int = 1
 var has_lost_heart = false
 var win_chain: int = 0
 var game_round: int = 0
@@ -32,13 +34,18 @@ var current_game_pack_ids: Array[int] = []
 var current_game_pool: Array[MicrogameResource] = []
 var current_game: MicrogameResource = null
 var current_speed_counter: int = 0
+var current_game_modifiers: Array[GameModifierResource] = []
 
 var cached_gamepack_meta: Dictionary[GamePackResource, int] = {}
+
+var mod_initial_hearts: int = 6
+var mod_increase_speed_after: int = 5
+var mod_initial_time_scale: float = 1.0
 
 func _ready() -> void:
 	GameEvents.game_ended.connect(_on_game_ended)
 	game_intermission_finished.connect(_on_intermission_finished)
-	current_hearts = roundi(max_hearts / 2.0)
+	#current_hearts = roundi(max_hearts / 2.0)
 
 func _on_game_ended(has_won: bool) -> void:
 	game_won = has_won
@@ -59,7 +66,7 @@ func _on_game_ended(has_won: bool) -> void:
 		win_chain_add()
 		game_round += 1
 		current_speed_counter += 1
-		if current_speed_counter >= increase_speed_every:
+		if current_speed_counter >= mod_increase_speed_after:
 			increase_speed()
 			current_speed_counter = 0
 
@@ -87,8 +94,8 @@ func get_game_packs() -> Dictionary[GamePackResource, int]:
 	cached_gamepack_meta = pack_counts
 	return cached_gamepack_meta
 
-func create_game_pool(pack_ids: Array[int]) -> void:
-	print("Creating new game pool for pack id(s): %s" % pack_ids)
+func create_game_pool(pack_ids: Array[int], modifiers: Array[GameModifierResource]) -> void:
+	print("Creating new game pool for pack id(s): ", pack_ids)
 	current_game_pack_ids = pack_ids
 	current_game_pool.clear()
 	
@@ -104,13 +111,26 @@ func create_game_pool(pack_ids: Array[int]) -> void:
 		push_error("sadly, we have a game pool without games smh")
 	
 	game_cycler = GameCycler.new(current_game_pool, true)
+	if modifiers.is_empty():
+		pick_game_modifiers()
+	else:
+		set_current_modifiers(modifiers)
+
+func create_all_game_pool() -> void:
+	print("Creating a game pool with all the games from the GamePacks")
+	var ids: Array[int] = []
+	
+	for pack in game_packs:
+		ids.append(pack.pack_id)
+		
+	create_game_pool(ids, [])
 
 func get_next_scene() -> String:
 	print("Choosing next scene")
 	print("Current hearts: %s" % current_hearts)
 	
 	if !game_won || has_speed_increased:
-		print("player has lost a heart or speedup, going to intermission")
+		print("going to intermission because of game failed: %s or the speed increased: %s" % [!game_won, has_speed_increased])
 		return "res://scenes/intermission.tscn"
 	else:
 		var next_game = _pick_random_game()
@@ -130,7 +150,7 @@ func _on_intermission_finished() -> void:
 
 func reset() -> void:
 	print("Resetting game manager state")
-	current_hearts = roundi(max_hearts / 2.0)
+	current_hearts = 6
 	has_lost_heart = false
 	game_won = true
 	win_chain = 0
@@ -146,7 +166,7 @@ func win_chain_add() -> void:
 	win_chain += 1
 	if win_chain % 3 == 0:
 		NotificationManager.show_notification("[wave amp=50.0 freq=5.0 connected=1]You Are On [color=#f3c96a]Fire![/color] %s Wins In a Row![/wave]" % win_chain)
-	if win_chain % 12 == 0 and current_hearts < max_hearts:
+	if win_chain % 12 == 0 and current_hearts < mod_initial_hearts:
 		current_hearts += 1
 		NotificationManager.show_notification("[wave amp=50.0 freq=5.0 connected=1]You Obtained a [color=#f3c96a]Heart![/color][/wave]")
 	elif win_chain % 12 == 9: 
@@ -169,3 +189,30 @@ func calculate_score() -> int:
 	print("the current score is %s" % total_points)
 	
 	return total_points
+
+func pick_game_modifiers() -> Array[GameModifierResource]:
+	print("Picking game modifers")
+	game_modifier_cycler = ModifierCycler.new(game_modifiers)
+	var mods = game_modifier_cycler.pick_unique_weighted(3)
+	current_game_modifiers = mods
+	set_current_modifiers(mods)
+	print("Picked these game modifiers: ", mods)
+	return mods
+
+func set_current_modifiers(mods: Array[GameModifierResource]) -> void:
+	for mod in mods:
+		match mod.type:
+			GameModifierResource.Type.HEALTH:
+				mod_initial_hearts = mod.initial_hearts
+			GameModifierResource.Type.TIME_SCALE:
+				if mod.increase_speed_after_pool:
+					mod_increase_speed_after = current_game_pool.size()
+				else:
+					mod_increase_speed_after = mod.increase_speed_after
+					
+				mod_initial_time_scale = mod.starting_time_scale
+	
+	current_hearts = mod_initial_hearts
+	Engine.time_scale = mod_initial_time_scale
+	
+	GameEvents.game_modifiers_chosen.emit()

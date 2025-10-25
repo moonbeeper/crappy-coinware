@@ -1,0 +1,212 @@
+[gd_scene load_steps=16 format=3 uid="uid://bt8tjlkja55ga"]
+
+[ext_resource type="Script" uid="uid://dwfg0gbohybuh" path="res://scripts/chosen_difficulty.gd" id="1_8ql7l"]
+[ext_resource type="Shader" uid="uid://dc8gw1xhp7d2y" path="res://assets/shaders/outline_selection.gdshader" id="2_tpbqf"]
+[ext_resource type="Texture2D" uid="uid://bsxkc04f2gddv" path="res://assets/rect.png" id="3_htnip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07g6l"]
+shader = ExtResource("2_tpbqf")
+shader_parameter/out_of_bounds = true
+shader_parameter/stop = true
+shader_parameter/outline_thickness = 3.0
+shader_parameter/outline_color = Color(0.9529412, 0.7882353, 0.41568628, 1)
+shader_parameter/sweep_speed = 0.5
+shader_parameter/sweep_width = 0.1
+shader_parameter/sweep_intensity = 1.0
+shader_parameter/outline_ignore_modulate = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fovcx"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpbqf"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_htnip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07g6l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o323q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vdm7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htnip"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cof0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gkvk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj6td"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wa6ox"]
+
+[node name="ChosenDifficulty" type="Control" node_paths=PackedStringArray("background", "container", "panel_bg", "difficulty_container", "actions_container", "reroll_button", "start_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ql7l")
+background = NodePath("Background")
+container = NodePath("CenterContainer")
+panel_bg = NodePath("CenterContainer/PanelBackground")
+difficulty_container = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer")
+actions_container = NodePath("MarginContainer")
+reroll_button = NodePath("MarginContainer/HBoxContainer/RerollMods")
+start_button = NodePath("MarginContainer/HBoxContainer/Start")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelBackground" type="NinePatchRect" parent="CenterContainer"]
+modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
+material = SubResource("ShaderMaterial_07g6l")
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+texture = ExtResource("3_htnip")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fovcx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Here's your chosen game modifiers for this session[/center]"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RerollMods" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.817521, 0.8175213, 0.8175217, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpbqf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_htnip")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_07g6l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o323q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4vdm7")
+text = "Reroll modifiers"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/RerollMods"]
+modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_htnip")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(201.5, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_htnip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cof0v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gkvk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hj6td")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wa6ox")
+flat = true
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Start/CenterContainer"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[wave]Start[/wave]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Start"]
+modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_htnip")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RerollMods" to="." method="_on_reroll_mods_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]

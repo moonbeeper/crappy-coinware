@@ -169,7 +169,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "Speed [shake rate=20.0 level=5 connected=1][color=#f3c96a]UP!![/color][/shake]"
+text = "Speed [shake rate=20.0 level=7 connected=1][color=#f3c96a]UP!![/color][/shake]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -274,8 +274,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Background"]
-copy_mode = 2
 
 [connection signal="can_draw_hearts" from="." to="DrawHearts" method="_on_gameplay_can_draw_hearts"]

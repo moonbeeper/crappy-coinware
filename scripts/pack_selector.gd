@@ -103,5 +103,5 @@ func update_play_button():
 func _on_play_button_pressed() -> void:
 	print("play button pressed, going to intermission")
 	GameManager.reset()
-	GameManager.create_game_pool(active_packs)
+	GameManager.create_game_pool(active_packs, [])
 	SceneManager.swap_scene("res://scenes/intermission.tscn", self)

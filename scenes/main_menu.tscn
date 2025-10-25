@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bly2cbsf4sowg"]
+[gd_scene load_steps=8 format=3 uid="uid://bly2cbsf4sowg"]
 
 [ext_resource type="Script" uid="uid://ca5h3s33obng7" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Shader" uid="uid://cmped3ewxr7m6" path="res://assets/shaders/scrolling_background.gdshader" id="2_8ln24"]
 [ext_resource type="FontFile" uid="uid://7ojg67p1k4hu" path="res://assets/DynaPuff-VariableFont_wdth,wght.ttf" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://dtylidr22sic" path="res://assets/beep.png" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://bsxkc04f2gddv" path="res://assets/rect.png" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bau50dfyjrnud" path="res://assets/crappywarelogo.png" id="6_rtw2f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oa1go"]
 shader = ExtResource("2_8ln24")
@@ -43,31 +44,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16470589, 0.16470589, 0.16470589, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -44.0
-offset_right = 90.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 50.0
+offset_right = 120.0
+offset_bottom = 90.0
+
+[node name="ColorRect" type="TextureRect" parent="VBoxContainer2"]
+modulate = Color(0.95, 0.84455, 0.5985, 1)
+custom_minimum_size = Vector2(368.64, 172.8)
+layout_mode = 2
+texture = ExtResource("6_rtw2f")
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/CenterContainer"]
+layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer2/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.27450982, 0.1254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 28
 text = "Play"
 flat = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/Button"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer2/CenterContainer/VBoxContainer/Play"]
 modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
 show_behind_parent = true
 layout_mode = 1
@@ -77,21 +89,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_8ln24")
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_lock_ = true
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(128, 64)
+[node name="CustomGame" type="Button" parent="VBoxContainer2/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.27450982, 0.1254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 24
-text = "get out"
+theme_override_font_sizes/font_size = 28
+text = "Custom Game"
 flat = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/Button2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer2/CenterContainer/VBoxContainer/CustomGame"]
 modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
 show_behind_parent = true
 layout_mode = 1
@@ -101,10 +118,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_8ln24")
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_exit"]
+[node name="Rankings" type="Button" parent="VBoxContainer2/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.27450982, 0.1254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 28
+text = "Rankings"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer2/CenterContainer/VBoxContainer/Rankings"]
+modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8ln24")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_lock_ = true
+
+[node name="Quit" type="Button" parent="VBoxContainer2/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.27450982, 0.1254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer2/CenterContainer/VBoxContainer/Quit"]
+modulate = Color(0.9529412, 0.7882353, 0.41568628, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8ln24")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/VBoxContainer/CustomGame" to="." method="_on_custom_game_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/VBoxContainer/Rankings" to="." method="_on_rankings_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

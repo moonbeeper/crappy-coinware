@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameModifierResource" load_steps=3 format=3 uid="uid://cdyu3o8qb3q2r"]
+
+[ext_resource type="Texture2D" uid="uid://bfhnhn327dlbm" path="res://assets/normal_speed_mod.png" id="1_yxfa7"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="2_u727k"]
+
+[resource]
+script = ExtResource("2_u727k")
+display_name = "Normal Speed"
+icon = ExtResource("1_yxfa7")
+increase_speed_after_pool = true
+metadata/_custom_type_script = "uid://b71d3b4vdjio1"

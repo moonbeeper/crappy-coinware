@@ -44,6 +44,7 @@ stretch_mode = 5
 script = ExtResource("4_0wvwq")
 
 [node name="Node2D" type="Button" parent="."]
+top_level = true
 material = SubResource("ShaderMaterial_hsyh6")
 offset_left = 305.0
 offset_top = 43.0

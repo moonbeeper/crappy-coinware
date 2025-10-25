@@ -1,9 +1,5 @@
 extends Microgame
 
-#@onready var frame: TextureRect = ^"./	"
-#@onready var coin: Button
-#@onready var frame_uhh: Panel
-
 var already_pressed: bool = false
 
 func _ready() -> void:

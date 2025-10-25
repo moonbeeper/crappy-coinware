@@ -14,16 +14,14 @@ var speed_tween: Tween
 var failed_tween: Tween
 var has_already_continued: bool = false
 
-func _ready() -> void:
-	speed_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	failed_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	
+func _ready() -> void:	
 	ready_text.modulate = Color(1,1,1,0)
 	you_lost_txt.modulate = Color(1,1,1,0)
 	speed_up_txt.modulate = Color(1,1,1,0)
 	await get_tree().create_timer(.5).timeout
 	
 	if GameManager.has_lost_heart && GameManager.has_speed_increased:
+		speed_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		await animate_lost_heart()
 		
 		speed_tween.tween_property(speed_up_txt, "modulate", Color(1,1,1,1), 1)
@@ -36,9 +34,11 @@ func _ready() -> void:
 		await animate_lost_heart()	
 		can_draw_hearts.emit(GameManager.current_hearts)
 	elif GameManager.current_hearts <= 0:
-			failed_tween.parallel().tween_property(your_hearts_img, "modulate", Color(1,1,1,0), 1)
-			failed_tween.parallel().tween_property(you_lost_txt, "modulate", Color(1,1,1,1), 1)
+		failed_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		failed_tween.parallel().tween_property(your_hearts_img, "modulate", Color(1,1,1,0), 1)
+		failed_tween.parallel().tween_property(you_lost_txt, "modulate", Color(1,1,1,1), 1)
 	elif GameManager.has_speed_increased:
+		speed_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		speed_tween.tween_property(speed_up_txt, "modulate", Color(1,1,1,1), 1)
 	else:
 		can_draw_hearts.emit(GameManager.current_hearts)

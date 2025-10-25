@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameModifierResource" load_steps=3 format=3 uid="uid://ghr35pc7b4a3"]
+
+[ext_resource type="Texture2D" uid="uid://bu8shmjqk7blv" path="res://assets/normal_health_mod.png" id="1_jr1nt"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="2_x3txo"]
+
+[resource]
+script = ExtResource("2_x3txo")
+display_name = "Normal Health"
+icon = ExtResource("1_jr1nt")
+type = 1
+metadata/_custom_type_script = "uid://b71d3b4vdjio1"
