@@ -22,8 +22,10 @@ config/icon="uid://ssob814p3jbc"
 [autoload]
 
 GameManager="*res://nodes/game_manager.tscn"
-SceneManager="*res://scripts/scene_manager.gd"
-NotificationManager="*res://scripts/notification_manager.gd"
+SceneManager="*res://scripts/global/scene_manager.gd"
+NotificationManager="*res://scripts/global/notification_manager.gd"
+GameEvents="*res://scripts/global/game_events.gd"
+SaveDataManager="*res://scripts/global/save_data_manager.gd"
 
 [display]
 

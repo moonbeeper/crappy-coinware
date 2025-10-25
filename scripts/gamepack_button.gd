@@ -18,14 +18,13 @@ func _ready() -> void:
 	pack_icon_shadow.texture = game_pack.icon
 	tooltip_text = game_pack.display_name
 
-
 func _on_pressed() -> void:
 	if pop_tween and pop_tween.is_running():
 		pop_tween.kill()
 	pop_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	pop_tween.tween_property(self, "modulate", Color(1.5, 1.5, 1.5, 1.0), 0.1).from(Color(1,1,1,1))
 	pop_tween.chain().tween_property(self, "modulate", Color(1, 1, 1, 1), 0.2).from(Color(1.5,1.5,1.5,1))
-	GameManager.gamepack_press.emit(game_pack)
+	GameEvents.gamepack_pressed.emit(game_pack)
 	toggleActive()
 
 func _on_mouse_entered() -> void:

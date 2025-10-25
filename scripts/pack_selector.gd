@@ -21,7 +21,7 @@ func _ready() -> void:
 	right_side.modulate = Color(1,1,1,0)
 	play_button.modulate = Color(1,1,1,0)
 	info_text.modulate = Color(1,1,1,0)
-	GameManager.gamepack_press.connect(_on_gamepack_press)
+	GameEvents.gamepack_pressed.connect(_on_gamepack_pressed)
 
 	var game_packs = GameManager.get_game_packs()
 	for pack in game_packs:
@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 			for loading_icon in loading_icons:
 				loading_icon.rotation -= TAU / 12
 
-func _on_gamepack_press(gamepack: GamePackResource):
+func _on_gamepack_pressed(gamepack: GamePackResource):
 	print("gamepack pressed: %s with id %s" % [gamepack.display_name, gamepack.pack_id])
 	
 	if gamepack.pack_id in active_packs:
@@ -70,13 +70,12 @@ func update_rankings() -> void:
 	if active_packs.is_empty():
 		return
 	
-	var save_data = GameManager.save_data
 	var scores: Array[Dictionary] = []
 	
 	if active_packs.size() == 1:
-		scores = save_data.get_scores_for_pack(active_packs[0])
+		scores = SaveDataManager.get_scores_for_pack(active_packs[0])
 	else:
-		scores = save_data.get_scores_for_packs(active_packs)
+		scores = SaveDataManager.get_scores_for_packs(active_packs)
 	
 	if scores.is_empty():
 		var no_scores_label = Label.new()

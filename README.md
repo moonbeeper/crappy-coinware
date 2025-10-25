@@ -26,5 +26,5 @@ You can also get lives! You start with 3 lives and have a max of 6.
 
 you either:
 
-1. download godot 4.5 and open the project in it and run it
+1. download godot 4.5.1 and open the project in it and run it
 2. go to pre-built web release on [itch.io](https://moonbeeper.itch.io/coinware) and play it

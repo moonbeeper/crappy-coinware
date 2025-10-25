@@ -7,15 +7,13 @@ class_name HeartButton
 var disable_hover: bool = false
 var hover_tween: Tween
 
-func _ready() -> void:
-	pass
-
 func destroy() -> void:
 	$Texture.use_parent_material = true
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(material, "shader_parameter/progress", 2, 2.0).from(-1.5)
 	tween.parallel().tween_property($Shadow, "self_modulate:a", 0.0, 1.0)
 	await tween.finished
+	print("Destroy animation ended, deleting from tree heart card")
 	queue_free()
 
 func _on_mouse_entered() -> void:
