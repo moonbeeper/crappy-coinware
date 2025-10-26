@@ -12,6 +12,7 @@ var modifier_card = preload("res://nodes/modifer_display.tscn")
 var pop_tween1: Tween
 var pop_tween: Tween
 var current_cards: Array[Node] = []
+var ignore_reroll_button: bool = false
 
 func _ready() -> void:
 	container.modulate = Color(1,1,1,0)
@@ -54,15 +55,18 @@ func _on_game_modifiers_chosen() -> void:
 		await tween.finished
 		print("adding")
 		current_cards.append(card)
+	ignore_reroll_button = false
 
 
 func _on_reroll_mods_pressed() -> void:
+	if ignore_reroll_button: return
 	if pop_tween and pop_tween.is_running():
 		pop_tween.kill()
 	pop_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	pop_tween.tween_property(reroll_button, "modulate", Color(1.5, 1.5, 1.5, 1.0), 0.1).from(Color(1,1,1,1))
 	pop_tween.chain().tween_property(reroll_button, "modulate", Color(1, 1, 1, 1), 0.2).from(Color(1.5,1.5,1.5,1))
 	GameManager.pick_game_modifiers()
+	ignore_reroll_button = true
 
 func _on_start_pressed() -> void:
 	if pop_tween and pop_tween.is_running():
