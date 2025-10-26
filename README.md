@@ -2,13 +2,12 @@
 
 > The game is only intended to be played on PC only.
 
-This is my first attempt at making a game in Godot (I've never made a game before, haha). I'm not sure if will be up to
-any kind of quality standards but at least I learned a lot in the 2 days I've been working on it lol.
+This is the first game I've ever made, and it uses Godot. I'm not sure that the game is upto any kind of quality standards BUT at least am learning by each iteration of code or game or whatever that I make
 
-As I was saying, this is **crappy** clone of WarioWare microgames with the theme of *Coins* (per the theme of [Siege](https://siege.hackclub.com)). **BTW**, after 4 rounds the game starts to speed up and speed up and... you know it, speed up.
+Well, this is **crappy** clone of WarioWare microgames that started with the original theme of *Coins* (per the theme of [Siege](https://siege.hackclub.com)'s week 1). 
 
-You can also get lives! You start with 3 lives and have a max of 6.
-
+You can also get lives! You start with 1 or 3 or 6 lives and have a max of 6.
+And you also have random game modifiers in the normal mode! You might get a speed boost, a health boost or bad things lol
 ## the microgames
 
 *wooah*, we got the best of the best microgames over here:
@@ -21,6 +20,8 @@ You can also get lives! You start with 3 lives and have a max of 6.
 - spam your spacebar
 - burn bob
 - draw magic circles
+- catch stuff
+- flappy *coin*
 
 ## how to run
 
@@ -28,3 +29,4 @@ you either:
 
 1. download godot 4.5.1 and open the project in it and run it
 2. go to pre-built web release on [itch.io](https://moonbeeper.itch.io/coinware) and play it
+
