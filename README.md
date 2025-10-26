@@ -30,3 +30,7 @@ you either:
 1. download godot 4.5.1 and open the project in it and run it
 2. go to pre-built web release on [itch.io](https://moonbeeper.itch.io/coinware) and play it
 
+## demo
+
+https://github.com/user-attachments/assets/f17e1f0e-1802-440e-86f3-f7fbd3de16a0
+
