@@ -71,3 +71,8 @@ func _on_start_pressed() -> void:
 	pop_tween.tween_property(start_button, "modulate", Color(1.1, 1.1, 1.1, 1.0), 0.1).from(Color(1,1,1,1))
 	pop_tween.chain().tween_property(start_button, "modulate", Color(1, 1, 1, 1), 0.2).from(Color(1.1,1.1,1.1,1))
 	SceneManager.swap_scene(GameManager.get_next_scene(), self)
+
+
+func _on_go_back_pressed() -> void:
+	GameManager.reset()
+	SceneManager.swap_scene("res://scenes/main_menu.tscn", self)

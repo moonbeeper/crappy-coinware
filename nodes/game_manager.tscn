@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2j33ro41fv5p"]
+[gd_scene load_steps=26 format=3 uid="uid://b2j33ro41fv5p"]
 
 [ext_resource type="Script" uid="uid://cli7w0uhk8vfr" path="res://scripts/global/game_manager.gd" id="1_34tde"]
 [ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://resources/microgame.gd" id="2_udu3i"]
@@ -11,9 +11,12 @@
 [ext_resource type="Resource" uid="uid://cumm4xdlh8h4o" path="res://resources/games/burn_bob.tres" id="8_mx0hp"]
 [ext_resource type="Resource" uid="uid://8vh5jr1un8gd" path="res://resources/games/make_the_spell.tres" id="9_eatvy"]
 [ext_resource type="Script" uid="uid://bpnidneuwiacd" path="res://resources/gamepack.gd" id="9_ivdh1"]
+[ext_resource type="Resource" uid="uid://ckoaq1so4k247" path="res://resources/games/flappy_coin.tres" id="11_8yreq"]
 [ext_resource type="Resource" uid="uid://bntquwr4krdhf" path="res://resources/gamepacks/coins.tres" id="11_038pf"]
+[ext_resource type="Resource" uid="uid://clxqqjgj0onw4" path="res://resources/games/catch_the_stuff.tres" id="12_6utkf"]
 [ext_resource type="Resource" uid="uid://1nabw6n4k6pb" path="res://resources/gamepacks/magic.tres" id="12_eatvy"]
-[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="14_m70g1"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/difficulty.gd" id="14_m70g1"]
+[ext_resource type="Resource" uid="uid://ce55fi8lgftdm" path="res://resources/gamepacks/fall.tres" id="15_6utkf"]
 [ext_resource type="Resource" uid="uid://drt0wyt82shnk" path="res://resources/modifiers/faster_speed.tres" id="15_40h44"]
 [ext_resource type="Resource" uid="uid://3qe3fdjdgn3g" path="res://resources/modifiers/faster_speed_plus.tres" id="16_l722k"]
 [ext_resource type="Resource" uid="uid://bhknoo2ubixtp" path="res://resources/modifiers/hardcore_health.tres" id="17_8yreq"]
@@ -21,10 +24,11 @@
 [ext_resource type="Resource" uid="uid://ghr35pc7b4a3" path="res://resources/modifiers/normal_health.tres" id="19_pok8m"]
 [ext_resource type="Resource" uid="uid://cdyu3o8qb3q2r" path="res://resources/modifiers/normal_speed.tres" id="20_c1ri6"]
 [ext_resource type="Resource" uid="uid://diaj8hmjsai77" path="res://resources/modifiers/nothing.tres" id="21_40h44"]
+[ext_resource type="Resource" uid="uid://cia5it501sml7" path="res://resources/modifiers/slowpeed_speed.tres" id="25_pok8m"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_34tde")
-game_pool = Array[ExtResource("2_udu3i")]([ExtResource("9_eatvy"), ExtResource("3_udu3i"), ExtResource("5_q8mjp"), ExtResource("6_jdad8"), ExtResource("7_jdad8"), ExtResource("8_mx0hp"), ExtResource("4_ternb"), ExtResource("8_k4jhu")])
-game_packs = Array[ExtResource("9_ivdh1")]([ExtResource("11_038pf"), ExtResource("12_eatvy")])
-game_modifiers = Array[ExtResource("14_m70g1")]([ExtResource("15_40h44"), ExtResource("16_l722k"), ExtResource("17_8yreq"), ExtResource("18_6utkf"), ExtResource("19_pok8m"), ExtResource("20_c1ri6"), ExtResource("21_40h44")])
+game_pool = Array[ExtResource("2_udu3i")]([ExtResource("9_eatvy"), ExtResource("3_udu3i"), ExtResource("5_q8mjp"), ExtResource("6_jdad8"), ExtResource("7_jdad8"), ExtResource("8_mx0hp"), ExtResource("4_ternb"), ExtResource("8_k4jhu"), ExtResource("11_8yreq"), ExtResource("12_6utkf")])
+game_packs = Array[ExtResource("9_ivdh1")]([ExtResource("11_038pf"), ExtResource("12_eatvy"), ExtResource("15_6utkf")])
+game_modifiers = Array[ExtResource("14_m70g1")]([ExtResource("15_40h44"), ExtResource("16_l722k"), ExtResource("17_8yreq"), ExtResource("18_6utkf"), ExtResource("19_pok8m"), ExtResource("20_c1ri6"), ExtResource("21_40h44"), ExtResource("25_pok8m")])
 metadata/_custom_type_script = "uid://cli7w0uhk8vfr"

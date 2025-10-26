@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="GameModifierResource" load_steps=3 format=3 uid="uid://diaj8hmjsai77"]
 
 [ext_resource type="Texture2D" uid="uid://egdhh24xlknx" path="res://assets/todo_mod.png" id="1_7weng"]
-[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="2_lykwe"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/difficulty.gd" id="2_lykwe"]
 
 [resource]
 script = ExtResource("2_lykwe")
 display_name = "Nothing. am not even implemented lmao"
 icon = ExtResource("1_7weng")
 type = 2
+weight = 5
 metadata/_custom_type_script = "uid://b71d3b4vdjio1"

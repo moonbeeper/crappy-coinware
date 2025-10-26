@@ -7,19 +7,21 @@ var background = preload("res://minigames/common/background.tscn")
 var action_finished = preload("res://minigames/common/action_finished.tscn")
 
 signal game_ended
+signal game_started
 
-var game_started: bool = false
+var has_game_started: bool = false
 var finished_wait_timer: Timer
 var should_win_on_timeout: bool = false
 var should_ignore_new_win: bool = false
 
-func _setup():
+func _setup() -> void:
 	GameEvents.game_timer_ended.connect(_on_game_timer_ended)
 	GameEvents.start_game.connect(_on_start_game)
 	
 	GameEvents.game_state_shown.connect(_on_game_state_shown)
 	
 	game_ended.connect(_on_game_ended)
+	game_started.connect(_on_game_started)
 	
 	finished_wait_timer = Timer.new()
 	finished_wait_timer.wait_time = 1 
@@ -54,7 +56,8 @@ func _on_game_timer_ended() -> void:
 
 func _on_start_game() -> void:
 	print("Game started, setting game_started var")
-	game_started = true
+	has_game_started = true
+	game_started.emit()
 
 func has_won(state: bool):
 	if should_ignore_new_win: return
@@ -62,11 +65,14 @@ func has_won(state: bool):
 	GameEvents.game_ended.emit(state)
 	game_ended.emit()
 	
-func _on_game_ended():
+func _on_game_ended() -> void:
 	pass
 
-func _on_game_state_shown():
+func _on_game_state_shown() -> void:
 	swap_to_next_game()
 
-func swap_to_next_game():
+func swap_to_next_game() -> void:
 	SceneManager.swap_scene(GameManager.get_next_scene(), self)
+
+func _on_game_started() -> void:
+	pass

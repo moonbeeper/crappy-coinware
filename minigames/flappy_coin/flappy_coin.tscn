@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://sc8e24k6uhf4"]
+
+[ext_resource type="Script" uid="uid://dvr7lm0wvbn2t" path="res://minigames/flappy_coin/flappy_coin.gd" id="1_on476"]
+[ext_resource type="PackedScene" uid="uid://cnks656406s4b" path="res://minigames/flappy_coin/pipe.tscn" id="2_7tisd"]
+[ext_resource type="SpriteFrames" uid="uid://b63bxwh6df8kf" path="res://assets/real_fake_coin.tres" id="3_7tisd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8uvl"]
+radius = 47.0
+
+[node name="FlappyCoin" type="Node2D" node_paths=PackedStringArray("pipes", "coin_rigid")]
+script = ExtResource("1_on476")
+pipes = NodePath("pipes")
+coin_rigid = NodePath("RigidBody2D")
+
+[node name="pipes" type="Node2D" parent="."]
+
+[node name="pipe" parent="pipes" instance=ExtResource("2_7tisd")]
+position = Vector2(582, 94)
+
+[node name="pipe2" parent="pipes" instance=ExtResource("2_7tisd")]
+position = Vector2(1030, 183)
+
+[node name="pipe3" parent="pipes" instance=ExtResource("2_7tisd")]
+position = Vector2(1422, 104)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(119, 318)
+gravity_scale = 0.6
+freeze = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+scale = Vector2(0.8, 0.8)
+sprite_frames = ExtResource("3_7tisd")
+frame_progress = 0.51504487
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_t8uvl")
+
+[connection signal="pipe_scored" from="pipes/pipe" to="." method="_on_pipe_pipe_scored"]
+[connection signal="pipe_touched" from="pipes/pipe" to="." method="_on_pipe_pipe_touched"]
+[connection signal="pipe_scored" from="pipes/pipe2" to="." method="_on_pipe_pipe_scored"]
+[connection signal="pipe_touched" from="pipes/pipe2" to="." method="_on_pipe_pipe_touched"]
+[connection signal="pipe_scored" from="pipes/pipe3" to="." method="_on_pipe_pipe_scored"]
+[connection signal="pipe_touched" from="pipes/pipe3" to="." method="_on_pipe_pipe_touched"]

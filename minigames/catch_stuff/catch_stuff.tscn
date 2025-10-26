@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi8ybbks86lsv"]
+
+[ext_resource type="Texture2D" uid="uid://belmnnf1ynpad" path="res://assets/baket.png" id="1_4pndu"]
+[ext_resource type="Script" uid="uid://cs7ofobjj7ssw" path="res://minigames/catch_stuff/catch_stuff.gd" id="1_hw4ti"]
+[ext_resource type="SpriteFrames" uid="uid://b63bxwh6df8kf" path="res://assets/real_fake_coin.tres" id="1_pvr17"]
+[ext_resource type="SpriteFrames" uid="uid://cqxy6i4uoo2na" path="res://assets/magic_symboles.tres" id="2_ujiv8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bddeg"]
+radius = 67.00746
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbyy5"]
+size = Vector2(63.25, 30)
+
+[node name="CatchStuff" type="Node2D" node_paths=PackedStringArray("falling_objects", "basket")]
+script = ExtResource("1_hw4ti")
+falling_objects = [NodePath("RigidBody2D"), NodePath("RigidBody2D2"), NodePath("RigidBody2D3"), NodePath("RigidBody2D4")]
+basket = NodePath("Area2D")
+
+[node name="RigidBody2D" type="Area2D" parent="."]
+position = Vector2(390, 824)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(-220, -992)
+sprite_frames = ExtResource("1_pvr17")
+frame_progress = 0.51504487
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D2" type="Area2D" parent="."]
+position = Vector2(650, 634)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D2"]
+position = Vector2(-220, -992)
+sprite_frames = ExtResource("1_pvr17")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D3" type="Area2D" parent="."]
+position = Vector2(1112, 864)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D3"]
+position = Vector2(-220, -992)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_ujiv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D4" type="Area2D" parent="."]
+position = Vector2(866, 614)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D4"]
+position = Vector2(-220, -992)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_ujiv8")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D5" type="Area2D" parent="."]
+position = Vector2(531, 228)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D5"]
+position = Vector2(-220, -992)
+sprite_frames = ExtResource("1_pvr17")
+frame_progress = 0.51504487
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D6" type="Area2D" parent="."]
+position = Vector2(882, 399)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D6"]
+position = Vector2(-220, -992)
+sprite_frames = ExtResource("1_pvr17")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D7" type="Area2D" parent="."]
+position = Vector2(1294, 515)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D7"]
+position = Vector2(-220, -992)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_ujiv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="RigidBody2D8" type="Area2D" parent="."]
+position = Vector2(448, 409)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D8"]
+position = Vector2(-220, -992)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_ujiv8")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D8"]
+position = Vector2(-220, -992)
+shape = SubResource("CircleShape2D_bddeg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Baket" type="Sprite2D" parent="Area2D"]
+position = Vector2(134, 568)
+scale = Vector2(4, 4)
+texture = ExtResource("1_4pndu")
+
+[node name="CollisionShape2DD" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(135, 570)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_sbyy5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

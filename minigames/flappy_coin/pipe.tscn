@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnks656406s4b"]
+
+[ext_resource type="Script" uid="uid://c111brviqe2mn" path="res://minigames/flappy_coin/pipe.gd" id="1_8rcvg"]
+[ext_resource type="Texture2D" uid="uid://6pox00x1y180" path="res://assets/pipe.png" id="1_12yer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rcvg"]
+size = Vector2(87, 912)
+
+[node name="pipe" type="Node2D"]
+script = ExtResource("1_8rcvg")
+
+[node name="Pipe" type="Sprite2D" parent="."]
+position = Vector2(1, 847)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_12yer")
+
+[node name="Pipe2" type="Sprite2D" parent="."]
+position = Vector2(-2.344791e-13, -213)
+rotation = 3.1415927
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_12yer")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -335)
+shape = SubResource("RectangleShape2D_8rcvg")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, 726)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1, 243)
+shape = SubResource("RectangleShape2D_8rcvg")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+position = Vector2(0, 726)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(128, -367)
+shape = SubResource("RectangleShape2D_8rcvg")
+debug_color = Color(0, 0.7, 0.058333278, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]

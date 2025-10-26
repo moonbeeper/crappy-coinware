@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MicrogameResource" load_steps=4 format=3 uid="uid://clxqqjgj0onw4"]
+
+[ext_resource type="Resource" uid="uid://ce55fi8lgftdm" path="res://resources/gamepacks/fall.tres" id="1_6psob"]
+[ext_resource type="PackedScene" uid="uid://bi8ybbks86lsv" path="res://minigames/catch_stuff/catch_stuff.tscn" id="2_6psob"]
+[ext_resource type="Script" uid="uid://b76pj7j3rvs2j" path="res://resources/microgame.gd" id="3_mi1hu"]
+
+[resource]
+script = ExtResource("3_mi1hu")
+action_prompt = "just [color=#f3c96a]catch stuff[/color]"
+scene = ExtResource("2_6psob")
+time = 6.0
+game_pack = ExtResource("1_6psob")
+metadata/_custom_type_script = "uid://b76pj7j3rvs2j"

@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="GameModifierResource" load_steps=3 format=3 uid="uid://cfy5tsx1qqdve"]
 
 [ext_resource type="Texture2D" uid="uid://b3iaxf0ddc2kv" path="res://assets/less_health_mod.png" id="1_x8qdg"]
-[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="2_lvmd1"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/difficulty.gd" id="2_lvmd1"]
 
 [resource]
 script = ExtResource("2_lvmd1")
 display_name = "Less Health"
 icon = ExtResource("1_x8qdg")
 type = 1
+weight = 2
 initial_hearts = 3
 metadata/_custom_type_script = "uid://b71d3b4vdjio1"

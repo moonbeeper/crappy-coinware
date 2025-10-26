@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GameModifierResource" load_steps=3 format=3 uid="uid://bhknoo2ubixtp"]
 
 [ext_resource type="Texture2D" uid="uid://bye528liury6w" path="res://assets/hardcore_health_mod.png" id="1_tkvda"]
-[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/diffuculty.gd" id="2_fglxi"]
+[ext_resource type="Script" uid="uid://b71d3b4vdjio1" path="res://resources/difficulty.gd" id="2_fglxi"]
 
 [resource]
 script = ExtResource("2_fglxi")

@@ -42,6 +42,12 @@ var mod_initial_hearts: int = 6
 var mod_increase_speed_after: int = 5
 var mod_initial_time_scale: float = 1.0
 
+var default_modifiers: Array[GameModifierResource] = [
+	preload("res://resources/modifiers/nothing.tres"), 
+	preload("res://resources/modifiers/normal_health.tres"),
+	preload("res://resources/modifiers/normal_speed.tres")
+]
+
 func _ready() -> void:
 	GameEvents.game_ended.connect(_on_game_ended)
 	game_intermission_finished.connect(_on_intermission_finished)
@@ -216,3 +222,6 @@ func set_current_modifiers(mods: Array[GameModifierResource]) -> void:
 	Engine.time_scale = mod_initial_time_scale
 	
 	GameEvents.game_modifiers_chosen.emit()
+
+func set_default_modifiers() -> void:
+	set_current_modifiers(default_modifiers)

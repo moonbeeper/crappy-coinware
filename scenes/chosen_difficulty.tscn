@@ -208,5 +208,37 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
+[node name="GoBack" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 73.0
+theme_override_colors/font_hover_color = Color(0.817521, 0.8175213, 0.8175217, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpbqf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_htnip")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_07g6l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o323q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4vdm7")
+text = "Go back"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GoBack"]
+modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_htnip")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RerollMods" to="." method="_on_reroll_mods_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="GoBack" to="." method="_on_go_back_pressed"]

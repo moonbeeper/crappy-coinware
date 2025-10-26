@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GamePackResource" load_steps=3 format=3 uid="uid://ce55fi8lgftdm"]
+
+[ext_resource type="Texture2D" uid="uid://b0jwoxc8u7k2" path="res://assets/catch_gamepak.png" id="1_1dtk8"]
+[ext_resource type="Script" uid="uid://bpnidneuwiacd" path="res://resources/gamepack.gd" id="2_4mwdu"]
+
+[resource]
+script = ExtResource("2_4mwdu")
+display_name = "Falling themed games"
+icon = ExtResource("1_1dtk8")
+pack_id = 3
+metadata/_custom_type_script = "uid://bpnidneuwiacd"

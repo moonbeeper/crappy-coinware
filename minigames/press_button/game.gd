@@ -52,3 +52,6 @@ func _input(event) -> void:
 			has_won(true)
 		else:
 			has_won(false)
+
+
+	
