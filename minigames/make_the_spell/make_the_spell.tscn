@@ -55,7 +55,6 @@ metadata/_edit_lock_ = true
 [node name="FollowTheLine" type="Node2D" parent="."]
 script = ExtResource("2_q71k4")
 margin_of_error = 25.641
-show_dots = true
 player_line = ExtResource("4_n0fu0")
 metadata/_custom_type_script = "uid://ciyno8vkt6hew"
 
